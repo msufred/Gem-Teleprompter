@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gemseeker.gemteleprompter.MainScreenController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+         <items>
+            <VBox>
+               <children>
+                  <HBox spacing="8.0">
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                     <children>
+                        <ComboBox fx:id="fonts" editable="true" prefWidth="150.0" promptText="Font" />
+                        <ComboBox fx:id="fontSizes" editable="true" prefWidth="150.0" promptText="Font Size" />
+                        <ToggleButton fx:id="wrapText" mnemonicParsing="false" text="Wrap Text" />
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="textArea" prefHeight="600.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+               <items>
+                  <VBox>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="8.0">
+                           <children>
+                              <Label text="Monitor" />
+                              <ChoiceBox fx:id="monitors" prefHeight="24.0" prefWidth="395.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ChoiceBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox style="-fx-background-color: #fff;">
+                           <children>
+                              <Label text="Preview">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <StackPane fx:id="imageHolder" style="-fx-background-color: #000;" VBox.vgrow="ALWAYS">
+                           <children>
+                              <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </StackPane>
+                        <HBox spacing="8.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <ToggleButton fx:id="previewBtn" mnemonicParsing="false" text="Start Preview" />
+                              <Button fx:id="mirrorBtn" mnemonicParsing="false" text="Mirror Display" />
+                              <ChoiceBox fx:id="fpsList" prefHeight="24.0" prefWidth="93.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <FlowPane hgap="4.0" vgap="4.0">
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                           <children>
+                              <ToggleButton fx:id="showOutputBtn" mnemonicParsing="false" prefWidth="100.0" text="Show Output" />
+                              <ToggleButton fx:id="flipTextBtn" mnemonicParsing="false" prefWidth="100.0" text="Flip Text" />
+                              <ComboBox fx:id="prompterFps" prefHeight="24.0" prefWidth="113.0" promptText="Prompter FPS" />
+                           </children>
+                        </FlowPane>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Font Settings">
+                           <padding>
+                              <Insets left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                        </Label>
+                        <HBox spacing="4.0">
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                           <children>
+                              <ComboBox fx:id="outFonts" editable="true" prefHeight="24.0" prefWidth="187.0" promptText="Font" />
+                              <ComboBox fx:id="outFontSizes" editable="true" prefHeight="24.0" prefWidth="91.0" promptText="Font Size" />
+                              <ToggleButton fx:id="boldBtn" mnemonicParsing="false" prefWidth="30.0" text="B" />
+                              <ToggleButton fx:id="italicBtn" mnemonicParsing="false" prefWidth="30.0" text="I" />
+                              <ToggleButton fx:id="underlineBtn" mnemonicParsing="false" prefWidth="30.0" text="U" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="4.0">
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" />
+                           </padding>
+                           <children>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Background Color" />
+                                    <ColorPicker fx:id="backgroundColor" prefHeight="24.0" prefWidth="150.0" promptText="Background Color" />
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Font Color" />
+                                    <ColorPicker fx:id="fontColor" prefHeight="24.0" prefWidth="150.0" promptText="Font Color" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Play Controls">
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefWidth="80.0" text="Text Speed">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </Label>
+                              <Slider fx:id="speedSlider" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="4" showTickMarks="true" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefWidth="80.0" text="Scroll Speed">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </Label>
+                              <Slider fx:id="scrollSlider" majorTickUnit="50.0" max="500.0" min="50.0" minorTickCount="4" showTickMarks="true" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <FlowPane hgap="4.0" vgap="4.0">
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                           <children>
+                              <ToggleButton fx:id="playBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Play" />
+                              <Button fx:id="scrollUp" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Scroll Up" />
+                              <Button fx:id="scrollDown" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Scroll Down" />
+                              <Button fx:id="resetBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Reset" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+         </items>
+      </SplitPane>
+   </children>
+</VBox>
